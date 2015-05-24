@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <style type="text/css">
+        .table
+        {
+            display: table;
+        }
+
+            .table > div
+            {
+                display: table-row;
+            }
+
+                .table > div > div
+                {
+                    display: table-cell;
+                    width: 200px;
+                    height: 300px;
+                    background-color: #4cff00;
+                }
+
+                    .table > div > div:first-child
+                    {
+                        background-color: #0ff;
+                    }
+
+        #drager
+        {
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            margin: 50% auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="table">
+        <div>
+            <div>
+                <div draggable="true" id="drager">
+                    1
+                </div>
+            </div>
+            <div id="dragTarget">
+            </div>
+        </div>
+    </div>
+    <p id="mousePoint"></p>
+    <script type="text/javascript">
+
+        var page = {
+
+            drager: document.getElementById('drager'),
+
+            dragTarget: document.getElementById('dragTarget'),
+
+            mousePoint: document.getElementById('mousePoint'),
+
+            //初始化页面
+            init: function () {
+                this.initEvent();
+            },
+
+            //初始化页面事件
+            initEvent: function () {
+
+                //取消dragenter事件的默认行为
+                this.dragTarget.addEventListener('dragenter', function (event) {
+                    event.preventDefault();
+
+                    //设置dropEffect
+                    event.dataTransfer.dropEffect = "move";
+                }, false);
+                //取消dragover事件的默认行为
+                this.dragTarget.addEventListener('dragover', function (event) {
+                    event.preventDefault();
+                }, false);
+                //取消drop事件的默认行为
+                this.dragTarget.addEventListener('drop', function (event) {
+                    event.preventDefault();
+                    var value = event.dataTransfer.getData('text/plain');
+                    page.drager.innerText = (++value);
+                    event.target.appendChild(page.drager);
+                }, false);
+
+
+                this.drager.addEventListener('dragstart', function (event) {
+                    //设置effectAllowed
+                    event.dataTransfer.effectAllowed = "move";
+                    var value = event.target.innerText;
+                    //保存值
+                    event.dataTransfer.setData('text/plain', value);
+                }, false);
+
+                //结束拖动
+                this.drager.addEventListener('dragend', function (event) {
+                    alert("结束拖放,触发dragend事件");
+                    //在这个事件中怎么获得拖放结束时的放置目标
+                }, false);
+            }
+        };
+
+        page.init();
+
+    </script>
+
+</body>
+</html>

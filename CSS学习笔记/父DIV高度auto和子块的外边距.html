@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style type="text/css">
+
+        #parent {
+            height:auto;
+            /*border:1px solid #00ff90;*/
+        }
+
+            #parent p {
+                height:50%;
+            }
+
+    </style>
+</head>
+<body>
+
+    <!-- 
+        当父容器的高度height设置为auto，并且不设置上、下边框或者不设置上、下内边距时，父容器的高度只和子容器的边框+内边距+内容高度相同，子容器的外边距将超出父容器。
+        一旦父容器设置了上、下边框或者上、下内边距中的其中一个属性时，父容器就会把子容器的外边距包进去，即父容器的高度=子容器的外边距+子容器的边框+子容器的内边距+内容
+         -->
+
+    <div id="parent">
+        <p>阿斯科利发动机豆腐干阿斯利康打飞机阿萨德离开房间 sad李开复将阿斯利的看法集散地反抗了就洒到了；快接啊</p>
+    </div>
+</body>
+</html>

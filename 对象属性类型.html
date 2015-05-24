@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		/* 属性访问器
+		var person = {
+			_year:2014,
+			edition:1
+			};
+			
+		Object.defineProperty(person,'year',{
+				get:function(){
+						return this._year;
+					},
+				set:function(newValue){
+						if(newValue > this._year){
+							this.edition += newValue - this._year;
+							this._year=newValue;
+							}
+					}
+			});
+			
+		person.year = 2015;
+		*/
+		
+		/*属性访问器 方式二
+		var person = {
+			_year:2014,
+			edition:1,
+			
+			get year(){
+				return this._year;
+				},
+			set year(newValue){
+				if(newValue > this._year){
+					this.edition += newValue - this._year;
+					this._year = newValue;
+					}
+				}
+			};
+			
+			person.year = 2017;
+			
+			*/
+		
+		/* 属性类型
+		var person = {};
+		
+		Object.defineProperty(person,'name',{
+			writable:false,		//可写性
+			configurable:false,	//可配置性
+			enumerable:false,	//可枚举性
+			value:undefined		//属性值
+			});
+		*/
+		
+		//获取对象属性的描述
+    	var describe = Object.getOwnPropertyDescriptor(person,'name');
+		console.log(describe);
+		
+		
+		console.log(person);
+    </script>
+</body>
+</html>

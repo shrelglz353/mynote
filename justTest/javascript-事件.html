@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <div id="div">
+        <span id="span">
+            <input type="button" id="btn" value="confirm" />
+        </span>
+    </div>
+    <script type="text/javascript">
+
+        var d = document.getElementById('div'),
+            s = document.getElementById('span'),
+            b = document.getElementById('btn');
+
+        //d.addEventListener('click', function (event) {
+        //    alert('冒泡-div');
+        //}, false);
+
+        //s.addEventListener('click', function (event) {
+        //    alert('冒泡-span');
+        //}, false);
+
+        //b.addEventListener('click', function (event) {
+        //    alert('冒泡-btn');
+        //}, false);
+
+
+        //d.addEventListener('click', function (event) {
+        //    alert('捕获-div');
+        //}, true);
+
+        //s.addEventListener('click', function (event) {
+        //    alert('捕获-span');
+        //}, true);
+
+        //b.addEventListener('click', function (event) {
+        //    alert('捕获-btn');
+        //}, true);
+
+        document.addEventListener('click', function (event) {
+            var ele = event.target;
+            if (ele.tagName.toLowerCase() == 'input') {
+                alert('将事件委托至document上，判断target来触发事件');
+            }
+        },false);
+    </script>
+</body>
+</html>
